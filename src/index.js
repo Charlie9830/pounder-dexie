@@ -22,6 +22,10 @@ export function initializeDexie() {
         generalConfig: "id, value"
     })
 
+    db.on("populate", () => {
+        db.generalConfig.put({id: 0, value: { isFirstTimeBoot: true }});
+    });
+
     isSetup = true;
 }
 
